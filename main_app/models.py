@@ -1,10 +1,14 @@
 from django.db import models
-
+from datetime import date
 SCENTS = [
-    ('NONE', 'No Smell'),
-    ('SWEET', 'Sweet'),
-    ('STRONG', 'Strong'),
-    ('EARTHY', 'Earthy')
+    ('No Smell', 'NONE'),
+    ('Sweet', 'SWEET'),
+    ('Strong', 'STRONG'),
+    ('Earthy', 'EARTHY'),
+    ('Woody', 'WOODY'),
+    ('Fresh', 'FRESH'),
+    ('Aromatic', 'AROMA')
+
 ]
 
 WATERAMOUNT = [
@@ -23,6 +27,10 @@ class Flowers(models.Model):
     
     def __str__(self) :
         return self.name
+    
+    # def watered_today(self):
+    #     return self.watered.filter(date=date.today()).count() == 1
+        # unsure if it should be feeding_set or if I can change name to water_set
 
 class Watering(models.Model):
     date = models.DateField('Watering Date')
@@ -35,3 +43,6 @@ class Watering(models.Model):
 
     def __str__(self):
         return f'{self.flowers.name} | {self.get_amount_display()} amount of watering on {self.date.month} / {self.date.day}'
+    
+    class Meta :
+        ordering = ['-date']
