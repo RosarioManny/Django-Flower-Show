@@ -2,8 +2,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
-from .models import Flowers
-from .serializers import FlowersSerializer
+from .models import Flowers, Watering
+from .serializers import FlowersSerializer, WateringSerializer
 
 # Define the home view
 class Home(APIView):

@@ -25,7 +25,7 @@ class Flowers(models.Model):
         return self.name
 
 class Watering(models.Model):
-    date = models.DateField()
+    date = models.DateField('Watering Date')
     amount = models.CharField(
         choices=WATERAMOUNT,
         default=WATERAMOUNT[0][0]
@@ -34,4 +34,4 @@ class Watering(models.Model):
     flowers = models.ForeignKey(Flowers, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.get_amount_display()} amount of watering on {self.date}'
+        return f'{self.flowers.name} | {self.get_amount_display()} amount of watering on {self.date.month} / {self.date.day}'
