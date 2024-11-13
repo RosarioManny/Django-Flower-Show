@@ -10,8 +10,9 @@ class Home(APIView):
     content = {'message': 'Welcome to the Flower Show api home route!'}
     return Response(content)
   
-class FlowerList(generics.ListCreateAPIView)
-  def Flowers
+# class FlowerList(generics.ListCreateAPIView)
+#   def Flowers:
 
-class FlowerDetails(generics.RetrieveUpdateDestroyAPIView)
+# class FlowerDetails(generics.RetrieveUpdateDestroyAPIView)
+  
   

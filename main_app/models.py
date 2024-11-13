@@ -15,3 +15,5 @@ class Flowers(models.Model):
         default=SCENTS[0][0],
     )
     
+    def __str__(self) :
+        return self.name
