@@ -28,9 +28,8 @@ class Flowers(models.Model):
     def __str__(self) :
         return self.name
     
-    # def watered_today(self):
-    #     return self.watered.filter(date=date.today()).count() == 1
-        # unsure if it should be feeding_set or if I can change name to water_set
+    def watered_today(self):
+        return self.watering_set.filter(date=date.today()).count() == 1
 
 class Watering(models.Model):
     date = models.DateField('Watering Date')

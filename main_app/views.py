@@ -11,6 +11,7 @@ class Home(APIView):
     content = {'message': 'Welcome to the Flower Show api home route!'}
     return Response(content)
   
+# FLOWERS
 class FlowerList(generics.ListCreateAPIView) :
   queryset = Flowers.objects.all()
   serializer_class = FlowersSerializer
@@ -20,6 +21,8 @@ class FlowerDetails(generics.RetrieveUpdateDestroyAPIView):
   serializer_class = FlowersSerializer
   lookup_field = 'id'
   
+
+# WATERING
 class WaterListCreate(generics.ListCreateAPIView):
   serializer_class = WateringSerializer
 
@@ -30,9 +33,7 @@ class WaterListCreate(generics.ListCreateAPIView):
   def preform_create(self,serializer):
 
     flower_id = self.kwargs['flower_id']
-
     flower = Flowers.objects.get(id=flower_id)
-
     serializer.save(flower=flower)
 
 class WateringDetails(generics.RetrieveUpdateDestroyAPIView):
